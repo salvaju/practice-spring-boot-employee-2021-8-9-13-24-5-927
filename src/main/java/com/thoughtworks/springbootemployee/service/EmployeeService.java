@@ -43,6 +43,6 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        //do something
+        employeeRepository.addEmployee(employee);
     }
 }

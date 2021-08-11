@@ -15,6 +15,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTest {
@@ -109,7 +111,7 @@ public class EmployeeServiceTest {
         employeeService.addEmployee(employee);
 
         // Then
-        assertEquals(employee.getId(), employeeService.getEmployeeById(7));
+        verify(employeeRepository, times(1)).addEmployee(employee);
     }
 
 }
