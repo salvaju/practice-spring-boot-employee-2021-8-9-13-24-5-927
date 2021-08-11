@@ -35,4 +35,8 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
+    public List<Employee> getEmployeesByPagination(Long pageIndex, Long pageSize) {
+        return null;
+    }
+
 }
