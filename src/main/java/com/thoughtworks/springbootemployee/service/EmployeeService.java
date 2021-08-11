@@ -48,6 +48,6 @@ public class EmployeeService {
     }
 
     public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
-        return null;
+       return employeeRepository.updateEmployeeInformation(employeeId, employeeToBeUpdated);
     }
 }

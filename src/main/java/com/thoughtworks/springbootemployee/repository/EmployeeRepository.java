@@ -28,7 +28,31 @@ public class EmployeeRepository {
         employees.add(employee);
     }
 
-    public Employee updateEmployeeInformation() {
-        return null;
+    public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
+        return employees.stream()
+                .filter(employee -> employeeId.equals(employee.getId()))
+                .findFirst()
+                .map(employee -> updateEmployeeInfo(employee, employeeToBeUpdated))
+                .get();
+    }
+
+    private Employee updateEmployeeInfo(Employee employee, Employee employeeToBeUpdated) {
+
+        if (employeeToBeUpdated.getName() != null) {
+            employee.setName(employeeToBeUpdated.getName());
+        }
+
+        if (employeeToBeUpdated.getAge() != null) {
+            employee.setAge(employeeToBeUpdated.getAge());
+        }
+
+        if (employeeToBeUpdated.getGender() != null) {
+            employee.setGender(employeeToBeUpdated.getGender());
+        }
+
+        if (employeeToBeUpdated.getSalary() != null) {
+            employee.setSalary(employeeToBeUpdated.getSalary());
+        }
+        return employee;
     }
 }
