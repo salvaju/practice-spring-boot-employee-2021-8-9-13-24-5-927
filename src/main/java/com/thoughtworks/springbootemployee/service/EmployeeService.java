@@ -3,9 +3,12 @@ package com.thoughtworks.springbootemployee.service;
 import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -24,6 +27,10 @@ public class EmployeeService {
                 .filter(employee -> employeeId.equals(employee.getId()))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<Employee> getAllEmployeesByGender(String gender) {
+        return null;
     }
 
 }
