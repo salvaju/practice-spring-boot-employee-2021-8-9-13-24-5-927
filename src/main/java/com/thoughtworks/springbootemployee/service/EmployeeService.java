@@ -50,4 +50,8 @@ public class EmployeeService {
     public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
        return employeeRepository.updateEmployeeInformation(employeeId, employeeToBeUpdated);
     }
+
+    public void deleteEmployee(Integer employeeId) {
+        //do nothing
+    }
 }

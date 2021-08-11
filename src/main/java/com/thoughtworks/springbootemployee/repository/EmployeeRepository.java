@@ -55,4 +55,8 @@ public class EmployeeRepository {
         }
         return employee;
     }
+
+    public void deleteEmployee(Integer employeeId){
+        //do nothing
+    }
 }

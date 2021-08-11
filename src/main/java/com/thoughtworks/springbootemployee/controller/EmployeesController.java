@@ -48,4 +48,5 @@ public class EmployeesController {
     public Employee updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody Employee employeeToBeUpdated) {
         return employeeService.updateEmployeeInformation(employeeId,employeeToBeUpdated);
     }
+
 }
