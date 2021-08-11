@@ -3,6 +3,7 @@ package com.thoughtworks.springbootemployee.service;
 import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -16,6 +17,10 @@ public class EmployeeService {
 
     public List<Employee> getEmployees() {
         return employeeRepository.getEmployees();
+    }
+
+    public Employee getEmployeeById(Integer employeeId) {
+        return null;
     }
 
 }
