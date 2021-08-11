@@ -20,7 +20,10 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(Integer employeeId) {
-        return null;
+        return employeeRepository.getEmployees().stream()
+                .filter(employee -> employeeId.equals(employee.getId()))
+                .findFirst()
+                .orElse(null);
     }
 
 }
