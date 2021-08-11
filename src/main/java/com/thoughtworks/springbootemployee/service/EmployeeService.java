@@ -5,6 +5,7 @@ import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -44,5 +45,9 @@ public class EmployeeService {
 
     public void addEmployee(Employee employee) {
         employeeRepository.addEmployee(employee);
+    }
+
+    public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
+        return null;
     }
 }

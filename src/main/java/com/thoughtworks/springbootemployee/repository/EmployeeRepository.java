@@ -27,4 +27,8 @@ public class EmployeeRepository {
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
+
+    public Employee updateEmployeeInformation() {
+        return null;
+    }
 }
