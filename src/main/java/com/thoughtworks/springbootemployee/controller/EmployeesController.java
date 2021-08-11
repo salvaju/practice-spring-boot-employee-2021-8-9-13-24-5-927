@@ -31,9 +31,7 @@ public class EmployeesController {
 
     @GetMapping(params = "gender")
     public List<Employee> getAllEmployeesByGender(@RequestParam String gender) {
-        return employees.stream()
-                .filter(employee -> gender.equals(employee.getGender()))
-                .collect(Collectors.toList());
+        return employeeService.getAllEmployeesByGender(gender);
     }
 
     @GetMapping(params = {"pageIndex", "pageSize"})
