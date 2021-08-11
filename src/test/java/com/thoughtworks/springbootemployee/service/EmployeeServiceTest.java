@@ -3,6 +3,7 @@ package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -97,6 +98,18 @@ public class EmployeeServiceTest {
         // Then
         assertIterableEquals(employees, actualEmployees);
         assertEquals(employees.size(), actualEmployees.size());
+    }
+
+    @Test
+    void should_add_employee_when_add_Employee_given_a_new_employee(){
+        // Given
+        Employee employee = new Employee(7, "Bell", 69, "Male", 16900);
+
+        // When
+        employeeService.addEmployee(employee);
+
+        // Then
+        assertEquals(employee.getId(), employeeService.getEmployeeById(7));
     }
 
 }

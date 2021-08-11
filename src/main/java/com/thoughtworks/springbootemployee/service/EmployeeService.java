@@ -42,4 +42,7 @@ public class EmployeeService {
                 .collect(Collectors.toList());
     }
 
+    public void addEmployee(Employee employee) {
+        //do something
+    }
 }
