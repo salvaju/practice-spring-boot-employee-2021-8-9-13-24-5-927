@@ -1,13 +1,11 @@
 package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/employees")
@@ -17,6 +15,7 @@ public class EmployeesController {
     public EmployeesController() {
         employees.add(new Employee(1,"Yuto",23,"Male",15000));
         employees.add(new Employee(2,"JC",22,"Male",10000));
+        employees.add(new Employee(3,"Khali",21,"Female",10000));
     }
 
     @GetMapping
@@ -30,5 +29,13 @@ public class EmployeesController {
                 .filter(employee -> employeeId.equals(employee.getId()))
                 .findFirst()
                 .orElse(null);
+    }
+    @GetMapping(params="gender")
+    public List<Employee> getAllMaleEmployees(@RequestParam String gender) {
+        return employees.stream()
+                .filter(employee -> gender.equals(employee.getGender()))
+                .collect(Collectors.toList());
+
+
     }
 }
