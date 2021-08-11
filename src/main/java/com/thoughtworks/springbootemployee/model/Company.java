@@ -1,4 +1,4 @@
-package com.thoughtworks.springbootCompany.model;
+package com.thoughtworks.springbootemployee.model;
 
 import com.thoughtworks.springbootemployee.model.Employee;
 

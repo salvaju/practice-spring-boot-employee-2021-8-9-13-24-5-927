@@ -1,9 +1,9 @@
-package com.thoughtworks.springbootCompany.service;
+package com.thoughtworks.springbootemployee.service;
 
-import com.thoughtworks.springbootCompany.model.Company;
-import com.thoughtworks.springbootCompany.repository.CompanyRepository;
+import com.thoughtworks.springbootemployee.model.Company;
+import com.thoughtworks.springbootemployee.repository.CompanyRepository;
 import com.thoughtworks.springbootemployee.model.Employee;
-import javafx.beans.binding.When;
+import com.thoughtworks.springbootemployee.service.CompanyService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -15,7 +15,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,7 +33,7 @@ public class CompanyServiceTest {
         ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
 
         List<Employee> coscoEmployees = new ArrayList<>();
-        ooclEmployees.add(new Employee(1,"Pekora", 23, "Female", 10 ));
+        coscoEmployees.add(new Employee(1,"Pekora", 23, "Female", 10 ));
 
         List<Company> companies = new ArrayList<>();
         companies.add(new Company("OOCL", 10, ooclEmployees));
