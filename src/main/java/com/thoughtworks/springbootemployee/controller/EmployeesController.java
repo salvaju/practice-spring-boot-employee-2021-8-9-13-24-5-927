@@ -48,5 +48,9 @@ public class EmployeesController {
                 .limit(pageSize)
                 .collect(Collectors.toList());
     }
+    @PostMapping
+    public void addEmployee(@RequestBody Employee employee){
+        employees.add(new Employee(employee.getId(),employee.getName(),employee.getAge(),employee.getGender(), employee.getSalary()));
+    }
 
 }
