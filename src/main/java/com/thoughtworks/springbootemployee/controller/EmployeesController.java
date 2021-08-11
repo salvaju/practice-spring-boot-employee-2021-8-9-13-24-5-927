@@ -35,7 +35,7 @@ public class EmployeesController {
     }
 
     @GetMapping(params = "gender")
-    public List<Employee> getAllGenderEmployees(@RequestParam String gender) {
+    public List<Employee> getAllEmployeesByGender(@RequestParam String gender) {
         return employees.stream()
                 .filter(employee -> gender.equals(employee.getGender()))
                 .collect(Collectors.toList());
