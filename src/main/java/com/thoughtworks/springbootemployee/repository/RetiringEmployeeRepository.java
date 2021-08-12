@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface RetiringEmployeeRepository extends JpaRepository<Employee, Integer> {
-
+    List<Employee> findAllByGender(String gender);
 
 }

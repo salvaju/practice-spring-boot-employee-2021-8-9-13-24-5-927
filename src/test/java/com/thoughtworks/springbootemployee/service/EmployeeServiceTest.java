@@ -60,24 +60,24 @@ public class EmployeeServiceTest {
         assertEquals(employee, actualEmployees);
     }
 
-//    @Test
-//    void should_return_male_employees_when_get_employee_by_gender_given_all_employees_and_male_as_gender(){
-//        // Given
-//        List<Employee> employees = new ArrayList<>();
-//        employees.add(new Employee(1, "Yuto", 23, "Male", 15000));
-//        employees.add(new Employee(2, "JC", 22, "Male", 10000));
-//        employees.add(new Employee(4, "Donald", 21, "Male", 104400));
-//        employees.add(new Employee(5, "Bob", 69, "Male", 10000));
-//        given(retiringEmployeeRepository.getEmployees()).willReturn(employees);
-//
-//        // When
-//        List<Employee> maleEmployees = employeeService.getAllEmployeesByGender("Male");
-//
-//        // Then
-//        assertEquals(employees, maleEmployees);
-//        assertEquals(employees.size(), maleEmployees.size());
-//        assertIterableEquals(employees, maleEmployees);
-//    }
+    @Test
+    void should_return_male_employees_when_get_employee_by_gender_given_all_employees_and_male_as_gender(){
+        // Given
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee(1, "Yuto", 23, "Male", 15000));
+        employees.add(new Employee(2, "JC", 22, "Male", 10000));
+        employees.add(new Employee(4, "Donald", 21, "Male", 104400));
+        employees.add(new Employee(5, "Bob", 69, "Male", 10000));
+        given(retiringEmployeeRepository.findAllByGender("Male")).willReturn(employees);
+
+        // When
+        List<Employee> maleEmployees = employeeService.getAllEmployeesByGender("Male");
+
+        // Then
+        assertEquals(employees, maleEmployees);
+        assertEquals(employees.size(), maleEmployees.size());
+        assertIterableEquals(employees, maleEmployees);
+    }
 //
 //    @Test
 //    void should_return_correct_list_of_employees_by_Pagination_when_get_employees_by_pagination_given__all_employees_pageIndex_and_page_size(){

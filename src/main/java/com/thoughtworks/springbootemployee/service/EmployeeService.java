@@ -22,14 +22,12 @@ public class EmployeeService{
     }
 
     public Employee getEmployeeById(Integer employeeId) {
-        return retiringEmployeeRepository.findById(employeeId).get();
+        return retiringEmployeeRepository.findById(employeeId).orElse(null);
     }
 
-//    public List<Employee> getAllEmployeesByGender(String gender) {
-//        return retiringEmployeeRepository.getEmployees().stream()
-//                .filter(employee -> gender.equals(employee.getGender()))
-//                .collect(Collectors.toList());
-//    }
+    public List<Employee> getAllEmployeesByGender(String gender) {
+        return retiringEmployeeRepository.findAllByGender(gender);
+    }
 //
 //    public List<Employee> getEmployeesByPagination(Long pageIndex, Long pageSize) {
 //        return retiringEmployeeRepository.getEmployees().stream()
