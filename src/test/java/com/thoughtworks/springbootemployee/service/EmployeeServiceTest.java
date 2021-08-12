@@ -2,8 +2,7 @@ package com.thoughtworks.springbootemployee.service;
 
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
-import org.junit.Assert;
+import com.thoughtworks.springbootemployee.repository.RetiringEmployeeRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,7 +24,7 @@ public class EmployeeServiceTest {
     private EmployeeService employeeService;
 
     @Mock
-    private EmployeeRepository employeeRepository;
+    private RetiringEmployeeRepository retiringEmployeeRepository;
 
     @Test
     void should_return_all_employees_when_get_all_employees_given_all_employees(){
@@ -37,7 +36,7 @@ public class EmployeeServiceTest {
             employees.add(new Employee(4, "Donald", 21, "Male", 104400));
             employees.add(new Employee(5, "Bob", 69, "Male", 10000));
             employees.add(new Employee(6, "Zagu", 25, "Female", 16900));
-            given(employeeRepository.getEmployees()).willReturn(employees);
+            given(retiringEmployeeRepository.getEmployees()).willReturn(employees);
 
         // When
          List<Employee> actualEmployees = employeeService.getEmployees();
@@ -58,7 +57,7 @@ public class EmployeeServiceTest {
         employees.add(new Employee(4, "Donald", 21, "Male", 104400));
         employees.add(new Employee(5, "Bob", 69, "Male", 10000));
         employees.add(new Employee(6, "Zagu", 25, "Female", 16900));
-        given(employeeRepository.getEmployees()).willReturn(employees);
+        given(retiringEmployeeRepository.getEmployees()).willReturn(employees);
 
         // When
         Employee actualEmployees = employeeService.getEmployeeById(1);
@@ -75,7 +74,7 @@ public class EmployeeServiceTest {
         employees.add(new Employee(2, "JC", 22, "Male", 10000));
         employees.add(new Employee(4, "Donald", 21, "Male", 104400));
         employees.add(new Employee(5, "Bob", 69, "Male", 10000));
-        given(employeeRepository.getEmployees()).willReturn(employees);
+        given(retiringEmployeeRepository.getEmployees()).willReturn(employees);
 
         // When
         List<Employee> maleEmployees = employeeService.getAllEmployeesByGender("Male");
@@ -92,7 +91,7 @@ public class EmployeeServiceTest {
         List<Employee> employees = new ArrayList<>();
 
         employees.add(new Employee(6, "Zagu", 25, "Female", 16900));
-        given(employeeRepository.getEmployees()).willReturn(employees);
+        given(retiringEmployeeRepository.getEmployees()).willReturn(employees);
 
         // When
         List<Employee> actualEmployees = employeeService.getEmployeesByPagination(1L, 5L);
@@ -111,14 +110,14 @@ public class EmployeeServiceTest {
         employeeService.addEmployee(employee);
 
         // Then
-        verify(employeeRepository, times(1)).addEmployee(employee);
+        verify(retiringEmployeeRepository, times(1)).addEmployee(employee);
     }
 
     @Test
     void should_update_employee_when_update_Employee_Information_given_an_updated_employee_information(){
         // Given
         Employee employee = new Employee(6, "Bell", 69, "Male", 16900);
-        given(employeeRepository.updateEmployeeInformation(6, employee)).willReturn(employee);
+        given(retiringEmployeeRepository.updateEmployeeInformation(6, employee)).willReturn(employee);
 
         // When
         Employee updatedEmployee = employeeService.updateEmployeeInformation(6, employee);
@@ -136,7 +135,7 @@ public class EmployeeServiceTest {
         employeeService.deleteEmployee(employeeId);
 
         // Then
-        verify(employeeRepository, times(1)).deleteEmployee(employeeId);
+        verify(retiringEmployeeRepository, times(1)).deleteEmployee(employeeId);
     }
 
 }

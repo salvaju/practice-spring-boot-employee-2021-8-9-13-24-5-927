@@ -2,56 +2,54 @@ package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
+import com.thoughtworks.springbootemployee.repository.RetiringEmployeeRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class EmployeeService {
-    private EmployeeRepository employeeRepository;
+public class EmployeeService{
 
-    public EmployeeService(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    private RetiringEmployeeRepository retiringEmployeeRepository;
+
+    public EmployeeService(RetiringEmployeeRepository retiringEmployeeRepository) {
+        this.retiringEmployeeRepository = retiringEmployeeRepository;
     }
 
     public List<Employee> getEmployees() {
-        return employeeRepository.getEmployees();
+        return retiringEmployeeRepository.findAll();
     }
 
-    public Employee getEmployeeById(Integer employeeId) {
-        return employeeRepository.getEmployees().stream()
-                .filter(employee -> employeeId.equals(employee.getId()))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public List<Employee> getAllEmployeesByGender(String gender) {
-        return employeeRepository.getEmployees().stream()
-                .filter(employee -> gender.equals(employee.getGender()))
-                .collect(Collectors.toList());
-    }
-
-    public List<Employee> getEmployeesByPagination(Long pageIndex, Long pageSize) {
-        return employeeRepository.getEmployees().stream()
-                .skip((pageIndex - 1) * pageSize)
-                .limit(pageSize)
-                .collect(Collectors.toList());
-    }
-
-    public void addEmployee(Employee employee) {
-        employeeRepository.addEmployee(employee);
-    }
-
-    public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
-       return employeeRepository.updateEmployeeInformation(employeeId, employeeToBeUpdated);
-    }
-
-    public void deleteEmployee(Integer employeeId) {
-        employeeRepository.deleteEmployee(employeeId);
-    }
+//    public Employee getEmployeeById(Integer employeeId) {
+//        return retiringEmployeeRepository.getEmployees().stream()
+//                .filter(employee -> employeeId.equals(employee.getId()))
+//                .findFirst()
+//                .orElse(null);
+//    }
+//
+//    public List<Employee> getAllEmployeesByGender(String gender) {
+//        return retiringEmployeeRepository.getEmployees().stream()
+//                .filter(employee -> gender.equals(employee.getGender()))
+//                .collect(Collectors.toList());
+//    }
+//
+//    public List<Employee> getEmployeesByPagination(Long pageIndex, Long pageSize) {
+//        return retiringEmployeeRepository.getEmployees().stream()
+//                .skip((pageIndex - 1) * pageSize)
+//                .limit(pageSize)
+//                .collect(Collectors.toList());
+//    }
+//
+//    public void addEmployee(Employee employee) {
+//        retiringEmployeeRepository.addEmployee(employee);
+//    }
+//
+//    public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
+//       return retiringEmployeeRepository.updateEmployeeInformation(employeeId, employeeToBeUpdated);
+//    }
+//
+//    public void deleteEmployee(Integer employeeId) {
+//        retiringEmployeeRepository.deleteEmployee(employeeId);
+//    }
 }
