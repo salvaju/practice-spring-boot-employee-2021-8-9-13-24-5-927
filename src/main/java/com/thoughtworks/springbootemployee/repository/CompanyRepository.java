@@ -95,4 +95,8 @@ public class CompanyRepository {
 
         return company;
     }
+
+    public void deleteEmployee(Integer companyId) {
+        //do nothing
+    }
 }

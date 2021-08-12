@@ -129,4 +129,16 @@ public class CompanyServiceTest {
         assertEquals(samsungCompany, updatedCompany);
     }
 
+    @Test
+    void should_delete_company_when_delete_company_Information_given_an_company_id(){
+        // Given
+        Integer companyId = 1;
+
+        // When
+        companyService.deleteCompany(companyId);
+
+        // Then
+        verify(companyRepository, times(1)).deleteEmployee(companyId);
+    }
+
 }
