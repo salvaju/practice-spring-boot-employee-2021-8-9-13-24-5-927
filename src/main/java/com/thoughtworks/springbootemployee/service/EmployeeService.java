@@ -67,7 +67,8 @@ public class EmployeeService{
         return employee;
     }
 
-//    public void deleteEmployee(Integer employeeId) {
-//        retiringEmployeeRepository.deleteEmployee(employeeId);
-//    }
+    public void deleteEmployee(Integer employeeId) {
+        Employee willBeDeletedEmployee = getEmployeeById(employeeId);
+        retiringEmployeeRepository.delete(willBeDeletedEmployee);
+    }
 }
