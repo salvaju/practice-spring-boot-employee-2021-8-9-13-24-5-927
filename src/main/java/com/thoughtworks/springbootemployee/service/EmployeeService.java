@@ -35,8 +35,9 @@ public class EmployeeService{
          return retiringEmployeeRepository.findAll((PageRequest.of(pageIndex - 1, pageSize))).getContent();
     }
 
-    public void addEmployee(Employee employee) {
+    public Employee addEmployee(Employee employee) {
         retiringEmployeeRepository.save(employee);
+        return employee;
     }
 
     public Employee updateEmployeeInformation(Integer employeeId, Employee updatedEmployeeInfo) {
