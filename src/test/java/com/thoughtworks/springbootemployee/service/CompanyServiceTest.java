@@ -79,4 +79,22 @@ public class CompanyServiceTest {
         // Then
         assertEquals(ooclEmployees, actualOoclEmployees);
     }
+
+    @Test
+    void should_return_correct_list_of_Companies_by_Pagination_when_get_companies_by_pagination_given_all_companies_and_pageIndex_and_page_size(){
+        // Given
+        List<Employee> xiaomiEmployees = new ArrayList<>();
+        xiaomiEmployees.add(new Employee(1,"Peko", 23, "Male", 10 ));
+
+        List<Company> companies = new ArrayList<>();
+        companies.add(new Company(1, "Xiamoi", 10, xiaomiEmployees));
+
+        given(companyRepository.getCompaniesByPagination(2L,5L)).willReturn(companies);
+
+        // When
+        List<Company> actualCompanies = companyService.getCompaniesByPagination(1L, 5L);
+
+        // Then
+        assertEquals(companies, actualCompanies);
+    }
 }

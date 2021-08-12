@@ -43,4 +43,8 @@ public class CompanyRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Company> getCompaniesByPagination(Long pageIndex, Long pageSize) {
+        return null;
+    }
 }
