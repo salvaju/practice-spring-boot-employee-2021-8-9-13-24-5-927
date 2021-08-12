@@ -28,4 +28,8 @@ public class CompanyRepository {
     public List<Company> getCompanies() {
         return companies;
     }
+
+    public Company getCompanyByID() {
+        return null;
+    }
 }
