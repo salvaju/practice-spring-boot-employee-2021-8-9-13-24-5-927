@@ -15,6 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,8 +37,8 @@ public class CompanyServiceTest {
         coscoEmployees.add(new Employee(1,"Pekora", 23, "Female", 10 ));
 
         List<Company> companies = new ArrayList<>();
-        companies.add(new Company("OOCL", 10, ooclEmployees));
-        companies.add(new Company("COSCO", 10, coscoEmployees));
+        companies.add(new Company(1, "OOCL", 10, ooclEmployees));
+        companies.add(new Company(2,"COSCO", 10, coscoEmployees));
         when(companyRepository.getCompanies()).thenReturn(companies);
 
         // When

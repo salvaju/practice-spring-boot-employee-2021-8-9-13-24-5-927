@@ -21,8 +21,8 @@ public class CompanyRepository {
         coscoEmployees.add(new Employee(1,"Pekora", 23, "Female", 10 ));
 
         companies = new ArrayList<>();
-        companies.add(new Company("OOCL", 10, ooclEmployees));
-        companies.add(new Company("COSCO", 10, coscoEmployees));
+        companies.add(new Company(1, "OOCL", 10, ooclEmployees));
+        companies.add(new Company(2, "COSCO", 10, coscoEmployees));
     }
 
     public List<Company> getCompanies() {
