@@ -41,6 +41,6 @@ public class CompanyService {
     }
 
     public void deleteCompany(Integer companyId) {
-        // do nothing
+        companyRepository.deleteEmployee(companyId);
     }
 }

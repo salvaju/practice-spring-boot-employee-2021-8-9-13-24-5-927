@@ -97,6 +97,11 @@ public class CompanyRepository {
     }
 
     public void deleteEmployee(Integer companyId) {
-        //do nothing
+        Company deletedCompany = companies.stream()
+                .filter(company -> company.getCompanyId().equals(companyId))
+                .findFirst()
+                .orElse(null);
+
+        companies.remove(deletedCompany);
     }
 }
