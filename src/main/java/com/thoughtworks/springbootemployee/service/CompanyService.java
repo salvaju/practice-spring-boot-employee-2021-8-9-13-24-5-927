@@ -35,4 +35,8 @@ public class CompanyService {
     public void addCompany(Company company) {
         companyRepository.addCompany(company);
     }
+
+    public Company updateEmployeeInformation(Integer companyID, Company updatedCompany) {
+        return null;
+    }
 }

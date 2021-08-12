@@ -113,4 +113,20 @@ public class CompanyServiceTest {
         verify(companyRepository, times(1)).addCompany(samsungCompany);
     }
 
+    @Test
+    void should_update_company_when_update_company_Information_given_an_updated_company_information(){
+        // Given
+        List<Employee> samsungEmployees = new ArrayList<>();
+        samsungEmployees.add(new Employee(1,"Tenshi", 23, "Female", 10 ));
+
+        Company samsungCompany = new Company(6, "Samsung", 10, samsungEmployees);
+        given(companyRepository.updateCompanyInformation(6, samsungCompany)).willReturn(samsungCompany);
+
+        // When
+        Company updatedCompany = companyService.updateEmployeeInformation(6, samsungCompany);
+
+        // Then
+        assertEquals(samsungCompany, updatedCompany);
+    }
+
 }

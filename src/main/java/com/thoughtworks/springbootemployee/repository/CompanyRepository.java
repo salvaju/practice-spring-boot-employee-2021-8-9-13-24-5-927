@@ -2,11 +2,9 @@ package com.thoughtworks.springbootemployee.repository;
 
 import com.thoughtworks.springbootemployee.model.Company;
 import com.thoughtworks.springbootemployee.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -71,5 +69,9 @@ public class CompanyRepository {
 
     public void addCompany(Company company) {
         companies.add(company);
+    }
+
+    public Company updateCompanyInformation(Integer companyId, Company companyToBeUpdated) {
+        return null;
     }
 }
