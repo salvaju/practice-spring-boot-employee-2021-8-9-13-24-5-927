@@ -39,10 +39,10 @@ public class EmployeesController {
 //        return employeeService.getEmployeesByPagination(pageIndex, pageSize);
 //    }
 //
-//    @PostMapping
-//    public void addEmployee(@RequestBody Employee employee) {
-//        employeeService.addEmployee(employee);
-//    }
+    @PostMapping
+    public void addEmployee(@RequestBody Employee employee) {
+        employeeService.addEmployee(employee);
+    }
 //
 //    @PutMapping(path = "/{employeeId}")
 //    public Employee updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody Employee employeeToBeUpdated) {

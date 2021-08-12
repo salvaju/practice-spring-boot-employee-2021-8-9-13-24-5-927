@@ -41,9 +41,9 @@ public class EmployeeService{
 //                .collect(Collectors.toList());
 //    }
 //
-//    public void addEmployee(Employee employee) {
-//        retiringEmployeeRepository.addEmployee(employee);
-//    }
+    public void addEmployee(Employee employee) {
+        retiringEmployeeRepository.save(employee);
+    }
 //
 //    public Employee updateEmployeeInformation(Integer employeeId, Employee employeeToBeUpdated) {
 //       return retiringEmployeeRepository.updateEmployeeInformation(employeeId, employeeToBeUpdated);
