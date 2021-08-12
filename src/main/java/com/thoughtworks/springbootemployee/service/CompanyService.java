@@ -29,8 +29,6 @@ public class CompanyService {
     }
 
     public List<Company> getCompaniesByPagination(Long pageIndex, Long pageSize) {
-
-        return null;
-
+        return companyRepository.getCompaniesByPagination(pageIndex, pageSize);
     }
 }
