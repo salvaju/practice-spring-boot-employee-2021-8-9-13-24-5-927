@@ -30,7 +30,7 @@ public class CompanyController {
     }
 
     @GetMapping(path = "/{companyId}/employees")
-    public List<Employee> getAllEmployeesByGender(@PathVariable Integer companyId) {
+    public List<Employee> getCompanyEmployees(@PathVariable Integer companyId) {
         return companyService.getCompanyEmployees(companyId);
     }
 

@@ -1,9 +1,8 @@
 package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Company;
-import com.thoughtworks.springbootemployee.repository.CompanyRepository;
+import com.thoughtworks.springbootemployee.repository.RetiredCompanyRepository;
 import com.thoughtworks.springbootemployee.model.Employee;
-import com.thoughtworks.springbootemployee.service.CompanyService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,7 +24,7 @@ public class CompanyServiceTest {
     private CompanyService companyService;
 
     @Mock
-    private CompanyRepository companyRepository;
+    private RetiredCompanyRepository retiredCompanyRepository;
 
     @Test
     void should_return_all_Company_when_get_all_company_given_all_companies(){
@@ -37,9 +36,9 @@ public class CompanyServiceTest {
         coscoEmployees.add(new Employee(1,"Pekora", 23, "Female", 10 ));
 
         List<Company> companies = new ArrayList<>();
-        companies.add(new Company(1, "OOCL", 10, ooclEmployees));
-        companies.add(new Company(2,"COSCO", 10, coscoEmployees));
-        when(companyRepository.getCompanies()).thenReturn(companies);
+        companies.add(new Company(1, "OOCL",  ooclEmployees));
+        companies.add(new Company(2,"COSCO",  coscoEmployees));
+        when(retiredCompanyRepository.getCompanies()).thenReturn(companies);
 
         // When
         List<Company> actualCompany = companyService.getCompanies();
@@ -56,8 +55,8 @@ public class CompanyServiceTest {
         List<Employee> ooclEmployees = new ArrayList<>();
         ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
 
-        Company company = new Company(1, "OOCL", 10, ooclEmployees);
-        given(companyRepository.getCompanyByID(1)).willReturn(company);
+        Company company = new Company(1, "OOCL",  ooclEmployees);
+        given(retiredCompanyRepository.getCompanyByID(1)).willReturn(company);
 
         // When
         Company actualCompany = companyService.getCompanyByID(1);
@@ -71,7 +70,7 @@ public class CompanyServiceTest {
         // Given
         List<Employee> ooclEmployees = new ArrayList<>();
         ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
-        given(companyRepository.getCompanyEmployees(1)).willReturn(ooclEmployees);
+        given(retiredCompanyRepository.getCompanyEmployees(1)).willReturn(ooclEmployees);
 
         // When
         List<Employee> actualOoclEmployees = companyService.getCompanyEmployees(1);
@@ -87,9 +86,9 @@ public class CompanyServiceTest {
         xiaomiEmployees.add(new Employee(1,"Peko", 23, "Male", 10 ));
 
         List<Company> companies = new ArrayList<>();
-        companies.add(new Company(1, "Xiamoi", 10, xiaomiEmployees));
+        companies.add(new Company(1, "Xiamoi",  xiaomiEmployees));
 
-        given(companyRepository.getCompaniesByPagination(2L,5L)).willReturn(companies);
+        given(retiredCompanyRepository.getCompaniesByPagination(2L,5L)).willReturn(companies);
 
         // When
         List<Company> actualCompanies = companyService.getCompaniesByPagination(2L, 5L);
@@ -104,13 +103,13 @@ public class CompanyServiceTest {
         List<Employee> samsungEmployees = new ArrayList<>();
         samsungEmployees.add(new Employee(1,"Tenshi", 23, "Female", 10 ));
 
-        Company samsungCompany = new Company(7, "Samsung", 10, samsungEmployees);
+        Company samsungCompany = new Company(7, "Samsung",  samsungEmployees);
 
         // When
         companyService.addCompany(samsungCompany);
 
         // Then
-        verify(companyRepository, times(1)).addCompany(samsungCompany);
+        verify(retiredCompanyRepository, times(1)).addCompany(samsungCompany);
     }
 
     @Test
@@ -119,8 +118,8 @@ public class CompanyServiceTest {
         List<Employee> samsungEmployees = new ArrayList<>();
         samsungEmployees.add(new Employee(1,"Tenshi", 23, "Female", 10 ));
 
-        Company samsungCompany = new Company(6, "Samsung", 10, samsungEmployees);
-        given(companyRepository.updateCompanyInformation(6, samsungCompany)).willReturn(samsungCompany);
+        Company samsungCompany = new Company(6, "Samsung",  samsungEmployees);
+        given(retiredCompanyRepository.updateCompanyInformation(6, samsungCompany)).willReturn(samsungCompany);
 
         // When
         Company updatedCompany = companyService.updateCompanyInformation(6, samsungCompany);
@@ -138,7 +137,7 @@ public class CompanyServiceTest {
         companyService.deleteCompany(companyId);
 
         // Then
-        verify(companyRepository, times(1)).deleteEmployee(companyId);
+        verify(retiredCompanyRepository, times(1)).deleteEmployee(companyId);
     }
 
 }

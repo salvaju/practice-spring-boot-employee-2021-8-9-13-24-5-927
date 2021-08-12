@@ -1,29 +1,34 @@
 package com.thoughtworks.springbootemployee.model;
 
-import com.thoughtworks.springbootemployee.model.Employee;
-
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Company {
 
-    private Integer companyId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
     private String companyName;
-    private Integer employeesNumber;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "companyId")
     private List<Employee> employees;
 
-    public Company(Integer companyId, String companyName, Integer employeesNumber, List<Employee> employees) {
-        this.companyId = companyId;
+    public Company() {
+
+    }
+
+    public Company(Integer id, String companyName, List<Employee> employees) {
+        this.id = id;
         this.companyName = companyName;
-        this.employeesNumber = employeesNumber;
         this.employees = employees;
     }
 
-    public Integer getCompanyId() {
-        return companyId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCompanyId(Integer companyId) {
-        this.companyId = companyId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCompanyName() {
@@ -32,14 +37,6 @@ public class Company {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
-    }
-
-    public Integer getEmployeesNumber() {
-        return employeesNumber;
-    }
-
-    public void setEmployeesNumber(Integer employeesNumber) {
-        this.employeesNumber = employeesNumber;
     }
 
     public List<Employee> getEmployees() {
