@@ -33,12 +33,12 @@ public class EmployeesController {
     public List<Employee> getAllEmployeesByGender(@RequestParam String gender) {
         return employeeService.getAllEmployeesByGender(gender);
     }
-//
-//    @GetMapping(params = {"pageIndex", "pageSize"})
-//    public List<Employee> getEmployeesByPagination(@RequestParam Long pageIndex, @RequestParam Long pageSize) {
-//        return employeeService.getEmployeesByPagination(pageIndex, pageSize);
-//    }
-//
+
+    @GetMapping(params = {"pageIndex", "pageSize"})
+    public List<Employee> getEmployeesByPagination(@RequestParam Integer pageIndex, @RequestParam Integer pageSize) {
+        return employeeService.getEmployeesByPagination(pageIndex, pageSize);
+    }
+
     @PostMapping
     public void addEmployee(@RequestBody Employee employee) {
         employeeService.addEmployee(employee);
