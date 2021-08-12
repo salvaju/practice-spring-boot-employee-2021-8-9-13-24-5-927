@@ -29,7 +29,10 @@ public class CompanyRepository {
         return companies;
     }
 
-    public Company getCompanyByID() {
-        return null;
+    public Company getCompanyByID(Integer companyId) {
+        return companies.stream()
+                .filter(company -> company.getCompanyId().equals(companyId))
+                .findFirst()
+                .orElse(null);
     }
 }

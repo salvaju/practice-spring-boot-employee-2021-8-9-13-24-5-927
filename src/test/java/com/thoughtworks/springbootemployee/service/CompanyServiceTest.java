@@ -57,7 +57,7 @@ public class CompanyServiceTest {
         ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
 
         Company company = new Company(1, "OOCL", 10, ooclEmployees);
-        given(companyRepository.getCompanyByID()).willReturn(company);
+        given(companyRepository.getCompanyByID(1)).willReturn(company);
 
         // When
         Company actualCompany = companyService.getCompanyByID(1);
