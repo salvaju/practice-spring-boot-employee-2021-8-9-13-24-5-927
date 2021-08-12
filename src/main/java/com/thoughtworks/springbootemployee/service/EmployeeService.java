@@ -64,6 +64,10 @@ public class EmployeeService{
             employee.setSalary(updatedEmployeeInfo.getSalary());
         }
 
+        if (updatedEmployeeInfo.getCompanyId() != null) {
+            employee.setCompanyId(updatedEmployeeInfo.getCompanyId());
+        }
+
         return employee;
     }
 
