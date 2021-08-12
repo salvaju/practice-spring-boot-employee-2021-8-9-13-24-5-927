@@ -33,6 +33,6 @@ public class CompanyService {
     }
 
     public void addCompany(Company company) {
-        //do nothing
+        companyRepository.addCompany(company);
     }
 }

@@ -38,4 +38,9 @@ public class CompanyController {
     public List<Company> getCompanyByPagination(@RequestParam Long pageIndex, @RequestParam Long pageSize) {
         return companyService.getCompaniesByPagination(pageIndex, pageSize);
     }
+
+    @PostMapping
+    public void addCompany(@RequestBody Company company) {
+        companyService.addCompany(company);
+    }
 }

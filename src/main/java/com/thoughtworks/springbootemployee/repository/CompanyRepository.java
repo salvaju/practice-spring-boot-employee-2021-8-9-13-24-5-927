@@ -70,6 +70,6 @@ public class CompanyRepository {
     }
 
     public void addCompany(Company company) {
-        //do nothing
+        companies.add(company);
     }
 }
