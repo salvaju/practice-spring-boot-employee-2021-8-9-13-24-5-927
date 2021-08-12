@@ -35,4 +35,8 @@ public class CompanyRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Employee> getCompanyEmployees(Integer companyId) {
+        return null;
+    }
 }

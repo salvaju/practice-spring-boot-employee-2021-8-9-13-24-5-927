@@ -65,4 +65,18 @@ public class CompanyServiceTest {
         // Then
         assertEquals(company, actualCompany);
     }
+
+    @Test
+    void should_return_correct_company_employees_when_get_company_employees_given_all_company_and_company_id(){
+        // Given
+        List<Employee> ooclEmployees = new ArrayList<>();
+        ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
+        given(companyRepository.getCompanyEmployees(1)).willReturn(ooclEmployees);
+
+        // When
+        List<Employee> actualOoclEmployees = companyService.getCompanyEmployees(1);
+
+        // Then
+        assertEquals(ooclEmployees, actualOoclEmployees);
+    }
 }
