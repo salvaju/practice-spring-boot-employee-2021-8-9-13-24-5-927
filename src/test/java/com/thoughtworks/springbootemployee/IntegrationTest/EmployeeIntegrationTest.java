@@ -26,7 +26,7 @@ public class EmployeeIntegrationTest {
     @Test
     void should_return_all_employees_when_call_get_employees_api() throws Exception {
         //given
-        final Employee employee = new Employee("JC", 21, "Male", 999);
+        final Employee employee = new Employee(1,"JC", 21, "Male", 999);
         employeeRepository.save(employee);
 
         //when
@@ -60,6 +60,29 @@ public class EmployeeIntegrationTest {
                 .andExpect(jsonPath("$.name").value("JC"))
                 .andExpect(jsonPath("$.age").value(21))
                 .andExpect(jsonPath("$.gender").value("Male"))
+                .andExpect(jsonPath("$.salary").value(999));
+    }
+
+    @Test
+    void should_return_correct_employee_when_call_get_employees_by_id_api() throws Exception {
+        //given
+        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        employeeRepository.save(firstEmployee);
+
+        final Employee secondEmployee = new Employee(2,"Pekora", 21, "Female", 999);
+        employeeRepository.save(secondEmployee);
+
+        //when
+
+        //then
+
+        int employeeId = 2;
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/employees/{employeeId}", employeeId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Pekora"))
+                .andExpect(jsonPath("$.age").value(21))
+                .andExpect(jsonPath("$.gender").value("Female"))
                 .andExpect(jsonPath("$.salary").value(999));
     }
 }
