@@ -43,12 +43,12 @@ public class EmployeesController {
     public void addEmployee(@RequestBody Employee employee) {
         employeeService.addEmployee(employee);
     }
-//
-//    @PutMapping(path = "/{employeeId}")
-//    public Employee updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody Employee employeeToBeUpdated) {
-//        return employeeService.updateEmployeeInformation(employeeId,employeeToBeUpdated);
-//    }
-//
+
+    @PutMapping(path = "/{employeeId}")
+    public Employee updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody Employee employeeToBeUpdated) {
+        return employeeService.updateEmployeeInformation(employeeId,employeeToBeUpdated);
+    }
+
 //    @DeleteMapping(path = "/{employeeId}")
 //    public void deleteEmployee(@PathVariable Integer employeeId) {
 //         employeeService.deleteEmployee(employeeId);
