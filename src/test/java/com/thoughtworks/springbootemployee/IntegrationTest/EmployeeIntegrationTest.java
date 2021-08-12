@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -39,4 +40,26 @@ public class EmployeeIntegrationTest {
                 .andExpect(jsonPath("$[0].salary").value(999));
     }
 
+    @Test
+    void should_add_employee_when_call_add_employee_api() throws Exception {
+        //given
+        String employee = "{\n" +
+                "\"name\": \"JC\",\n" +
+                "\"age\": 21,\n" +
+                "\"gender\": \"Male\",\n" +
+                "\"salary\": 999\n" +
+                "}";
+
+        //when
+
+        //then
+        mockMvc.perform(MockMvcRequestBuilders.post("/employees")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(employee))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("JC"))
+                .andExpect(jsonPath("$.age").value(21))
+                .andExpect(jsonPath("$.gender").value("Male"))
+                .andExpect(jsonPath("$.salary").value(999));
+    }
 }
