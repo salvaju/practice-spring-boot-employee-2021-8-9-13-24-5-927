@@ -11,6 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -115,6 +118,46 @@ public class EmployeeIntegrationTest {
                 .andExpect(jsonPath("$[0].name").value("Nijisanji"))
                 .andExpect(jsonPath("$[0].gender").value("Male"))
                 .andExpect(jsonPath("$[1].name").value("Cong"))
+                .andExpect(jsonPath("$[1].gender").value("Male"));
+    }
+
+    @Test
+    void should_return_list_of_employees_when_call_get_all_employees_by_pagination_api() throws Exception {
+        //given
+        List<Employee> employees = new ArrayList<>();
+        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        employeeRepository.save(firstEmployee);
+
+        final Employee secondEmployee = new Employee(2,"Nijisanji", 21, "Male", 999);
+        employeeRepository.save(secondEmployee);
+
+        final Employee thirdEmployee = new Employee(3,"Cong", 21, "Male", 999);
+        employeeRepository.save(thirdEmployee);
+
+        final Employee fourthEmployee = new Employee(4,"Razor", 23, "Female", 999);
+        employeeRepository.save(fourthEmployee);
+
+        final Employee fifthEmployee = new Employee(5,"Gon", 26, "Female", 999);
+        employeeRepository.save(fifthEmployee);
+
+        final Employee sixthEmployee = new Employee(6,"Kuku", 24, "Male", 999);
+        employeeRepository.save(sixthEmployee);
+
+        final Employee seventhEmployee = new Employee(7,"Whitemon", 69, "Male", 999);
+        employeeRepository.save(seventhEmployee);
+
+        //when
+
+        //then
+
+        Integer pageIndex = 2;
+        Integer pageSize = 5;
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/employees?pageIndex={pageIndex}&pageSize={pageSize}", pageIndex, pageSize))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("Kuku"))
+                .andExpect(jsonPath("$[0].gender").value("Male"))
+                .andExpect(jsonPath("$[1].name").value("Whitemon"))
                 .andExpect(jsonPath("$[1].gender").value("Male"));
     }
 }
