@@ -91,4 +91,30 @@ public class EmployeeIntegrationTest {
                 .andExpect(jsonPath("$.gender").value("Female"))
                 .andExpect(jsonPath("$.salary").value(999));
     }
+
+    @Test
+    void should_return_list_of_male_employees_when_call_get_all_employees_by_gender_api() throws Exception {
+        //given
+        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        employeeRepository.save(firstEmployee);
+
+        final Employee secondEmployee = new Employee(2,"Nijisanji", 21, "Male", 999);
+        employeeRepository.save(secondEmployee);
+
+        final Employee thirdEmployee = new Employee(3,"Cong", 21, "Male", 999);
+        employeeRepository.save(thirdEmployee);
+
+        //when
+
+        //then
+
+        String gender = "Male";
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/employees?gender={gender}", gender))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name").value("Nijisanji"))
+                .andExpect(jsonPath("$[0].gender").value("Male"))
+                .andExpect(jsonPath("$[1].name").value("Cong"))
+                .andExpect(jsonPath("$[1].gender").value("Male"));
+    }
 }
