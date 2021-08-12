@@ -68,4 +68,8 @@ public class CompanyRepository {
                 .limit(pageSize)
                 .collect(Collectors.toList());
     }
+
+    public void addCompany(Company company) {
+        //do nothing
+    }
 }

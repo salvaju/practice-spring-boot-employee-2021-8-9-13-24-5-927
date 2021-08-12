@@ -31,4 +31,8 @@ public class CompanyService {
     public List<Company> getCompaniesByPagination(Long pageIndex, Long pageSize) {
         return companyRepository.getCompaniesByPagination(pageIndex, pageSize);
     }
+
+    public void addCompany(Company company) {
+        //do nothing
+    }
 }
