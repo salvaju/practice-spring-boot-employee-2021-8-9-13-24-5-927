@@ -21,13 +21,10 @@ public class EmployeeService{
         return retiringEmployeeRepository.findAll();
     }
 
-//    public Employee getEmployeeById(Integer employeeId) {
-//        return retiringEmployeeRepository.getEmployees().stream()
-//                .filter(employee -> employeeId.equals(employee.getId()))
-//                .findFirst()
-//                .orElse(null);
-//    }
-//
+    public Employee getEmployeeById(Integer employeeId) {
+        return retiringEmployeeRepository.findById(employeeId).get();
+    }
+
 //    public List<Employee> getAllEmployeesByGender(String gender) {
 //        return retiringEmployeeRepository.getEmployees().stream()
 //                .filter(employee -> gender.equals(employee.getGender()))

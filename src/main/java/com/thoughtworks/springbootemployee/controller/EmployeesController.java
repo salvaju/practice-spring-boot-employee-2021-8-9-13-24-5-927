@@ -24,11 +24,11 @@ public class EmployeesController {
         return employeeService.getEmployees();
     }
 
-//    @GetMapping(path = "/{employeeId}")
-//    public Employee getEmployeeById(@PathVariable Integer employeeId) {
-//        return employeeService.getEmployeeById(employeeId);
-//    }
-//
+    @GetMapping(path = "/{employeeId}")
+    public Employee getEmployeeById(@PathVariable Integer employeeId) {
+        return employeeService.getEmployeeById(employeeId);
+    }
+
 //    @GetMapping(params = "gender")
 //    public List<Employee> getAllEmployeesByGender(@RequestParam String gender) {
 //        return employeeService.getAllEmployeesByGender(gender);
