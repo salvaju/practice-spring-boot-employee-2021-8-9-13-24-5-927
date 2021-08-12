@@ -25,6 +25,6 @@ public class CompanyService {
     }
 
     public List<Employee> getCompanyEmployees(Integer companyId) {
-        return null;
+        return companyRepository.getCompanyEmployees(companyId);
     }
 }

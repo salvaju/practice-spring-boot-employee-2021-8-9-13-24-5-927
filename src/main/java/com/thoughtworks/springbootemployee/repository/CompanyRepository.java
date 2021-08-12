@@ -37,6 +37,10 @@ public class CompanyRepository {
     }
 
     public List<Employee> getCompanyEmployees(Integer companyId) {
-        return null;
+        return companies.stream()
+                .filter(company -> company.getCompanyId().equals(companyId))
+                .map(company -> company.getEmployees())
+                .findFirst()
+                .orElse(null);
     }
 }
