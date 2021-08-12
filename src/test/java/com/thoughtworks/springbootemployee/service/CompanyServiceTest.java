@@ -123,7 +123,7 @@ public class CompanyServiceTest {
         given(companyRepository.updateCompanyInformation(6, samsungCompany)).willReturn(samsungCompany);
 
         // When
-        Company updatedCompany = companyService.updateEmployeeInformation(6, samsungCompany);
+        Company updatedCompany = companyService.updateCompanyInformation(6, samsungCompany);
 
         // Then
         assertEquals(samsungCompany, updatedCompany);
