@@ -75,17 +75,17 @@ public class EmployeeIntegrationTest {
     @Test
     void should_return_correct_employee_when_call_get_employees_by_id_api() throws Exception {
         //given
-        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        final Employee firstEmployee = new Employee("Rushia", 21, "Female", 999);
         employeeRepository.save(firstEmployee);
 
-        final Employee secondEmployee = new Employee(2,"Pekora", 21, "Female", 999);
+        final Employee secondEmployee = new Employee("Pekora", 21, "Female", 999);
         employeeRepository.save(secondEmployee);
 
         //when
 
         //then
 
-        int employeeId = 2;
+        int employeeId = secondEmployee.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.get("/employees/{employeeId}", employeeId))
                 .andExpect(status().isOk())
@@ -190,14 +190,14 @@ public class EmployeeIntegrationTest {
     @Test
     void should_return_delete_employee_when_call_delete_employee_api() throws Exception {
         //given
-        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        final Employee firstEmployee = new Employee("Rushia", 21, "Female", 999);
         employeeRepository.save(firstEmployee);
 
         //when
 
         //then
 
-        int employeeId = 1;
+        int employeeId = firstEmployee.getId();
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/employees/{employeeId}", employeeId))
                 .andExpect(status().isOk());
