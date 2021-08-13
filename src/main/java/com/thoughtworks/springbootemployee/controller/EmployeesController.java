@@ -53,8 +53,8 @@ public class EmployeesController {
 
     @PutMapping(path = "/{employeeId}")
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Employee updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody EmployeeRequest employeeRequest) {
-        return employeeService.updateEmployeeInformation(employeeId, employeeMapper.toEntity(employeeRequest));
+    public EmployeeReponse updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody EmployeeRequest employeeRequest) {
+        return employeeMapper.toResponse(employeeService.updateEmployeeInformation(employeeId, employeeMapper.toEntity(employeeRequest)));
     }
 
     @DeleteMapping(path = "/{employeeId}")
