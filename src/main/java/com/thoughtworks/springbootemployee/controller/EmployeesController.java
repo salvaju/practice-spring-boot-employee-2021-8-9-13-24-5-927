@@ -2,6 +2,7 @@ package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.mapper.EmployeeMapper;
 import com.thoughtworks.springbootemployee.model.Employee;
+import com.thoughtworks.springbootemployee.model.EmployeeReponse;
 import com.thoughtworks.springbootemployee.model.EmployeeRequest;
 import com.thoughtworks.springbootemployee.service.EmployeeService;
 import org.springframework.http.HttpStatus;
@@ -30,8 +31,8 @@ public class EmployeesController {
     }
 
     @GetMapping(path = "/{employeeId}")
-    public Employee getEmployeeById(@PathVariable Integer employeeId) {
-        return employeeService.getEmployeeById(employeeId);
+    public EmployeeReponse getEmployeeById(@PathVariable Integer employeeId) {
+        return employeeMapper.toResponse(employeeService.getEmployeeById(employeeId));
     }
 
     @GetMapping(params = "gender")
@@ -45,7 +46,7 @@ public class EmployeesController {
     }
 
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
+    @ResponseStatus(code = HttpStatus.CREATED) //TODO Use Employee Request and Mapper
     public Employee addEmployee(@RequestBody Employee employee) {
        return employeeService.addEmployee(employee);
     }
