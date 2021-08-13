@@ -1,17 +1,14 @@
 package com.thoughtworks.springbootemployee.service;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import com.thoughtworks.springbootemployee.repository.EmployeeRepository;
 import com.thoughtworks.springbootemployee.repository.RetiringEmployeeRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
-public class EmployeeService{
+public class EmployeeService {
 
     private RetiringEmployeeRepository retiringEmployeeRepository;
 
@@ -32,7 +29,7 @@ public class EmployeeService{
     }
 
     public List<Employee> getEmployeesByPagination(Integer pageIndex, Integer pageSize) {
-         return retiringEmployeeRepository.findAll((PageRequest.of(pageIndex - 1, pageSize))).getContent();
+        return retiringEmployeeRepository.findAll((PageRequest.of(pageIndex - 1, pageSize))).getContent();
     }
 
     public Employee addEmployee(Employee employee) {
