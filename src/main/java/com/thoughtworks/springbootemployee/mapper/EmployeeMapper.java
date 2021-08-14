@@ -29,11 +29,9 @@ public class EmployeeMapper {
     public List<EmployeeReponse> toResponse(List<Employee> employees) {
         List<EmployeeReponse> employeeResponses = new ArrayList<>();
 
-        while (employeeResponses.size() < employees.size()) employeeResponses.add(new EmployeeReponse());
-
-        for (int i = 0; i < employees.size(); i++) {
-            BeanUtils.copyProperties(employees.get(i), employeeResponses.get(i));
-        }
+        employees.stream()
+                .map(this::toResponse)
+                .forEach(employeeResponses::add);
 
         return employeeResponses;
     }
