@@ -57,6 +57,7 @@ public class CompanyService {
     }
 
     public void deleteCompany(Integer companyId) {
-        retiredCompanyRepository.deleteEmployee(companyId);
+        Company company = getCompanyById(companyId);
+        companyRepository.delete(company);
     }
 }
