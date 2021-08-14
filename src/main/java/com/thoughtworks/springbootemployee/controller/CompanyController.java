@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/companies")
 public class CompanyController {
 
-    private CompanyService companyService;
+    private final CompanyService companyService;
     private final CompanyMapper companyMapper;
     private final EmployeeMapper employeeMapper;
 
