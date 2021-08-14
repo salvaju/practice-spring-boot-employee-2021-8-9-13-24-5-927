@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -40,10 +41,10 @@ public class CompanyService {
     }
 
     public Company updateCompanyInformation(Integer companyId, Company updatedCompanyInfo) {
-        Company company = getCompanyById(companyId);
-        Company updatedCompany = updateCompanyInfo(company, updatedCompanyInfo);
-        companyRepository.save(updatedCompany);
-        return updatedCompany;
+        return Optional.ofNullable(getCompanyById(companyId))
+                .map(company -> updateCompanyInfo(company, updatedCompanyInfo))
+                .map(this::addCompany)
+                .orElse(null);
     }
 
     private Company updateCompanyInfo(Company company, Company updatedCompanyInfo) {
