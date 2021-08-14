@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/employees")
 public class EmployeesController {
 
-    private final List<Employee> employees = new ArrayList<>();
     private EmployeeService employeeService;
     private EmployeeMapper employeeMapper;
 
