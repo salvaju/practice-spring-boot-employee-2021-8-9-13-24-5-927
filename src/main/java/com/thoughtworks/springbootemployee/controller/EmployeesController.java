@@ -1,14 +1,13 @@
 package com.thoughtworks.springbootemployee.controller;
 
-import com.thoughtworks.springbootemployee.mapper.EmployeeMapper;
-import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.dto.EmployeeReponse;
 import com.thoughtworks.springbootemployee.dto.EmployeeRequest;
+import com.thoughtworks.springbootemployee.mapper.EmployeeMapper;
+import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,14 +39,14 @@ public class EmployeesController {
 
     @GetMapping(params = {"pageIndex", "pageSize"})
     public List<EmployeeReponse> getEmployeesByPagination(@RequestParam Integer pageIndex, @RequestParam Integer pageSize) {
-         return employeeMapper.toResponse(employeeService.getEmployeesByPagination(pageIndex, pageSize));
+        return employeeMapper.toResponse(employeeService.getEmployeesByPagination(pageIndex, pageSize));
     }
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
     public EmployeeReponse addEmployee(@RequestBody EmployeeRequest employeeRequest) {
         Employee employee = employeeService.addEmployee(employeeMapper.toEntity(employeeRequest));
-       return employeeMapper.toResponse(employee);
+        return employeeMapper.toResponse(employee);
     }
 
     @PutMapping(path = "/{employeeId}")
@@ -59,7 +58,7 @@ public class EmployeesController {
 
     @DeleteMapping(path = "/{employeeId}")
     public void deleteEmployee(@PathVariable Integer employeeId) {
-         employeeService.deleteEmployee(employeeId);
+        employeeService.deleteEmployee(employeeId);
     }
 
 }
