@@ -1,7 +1,5 @@
 package com.thoughtworks.springbootemployee.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +23,7 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(){
+    public Employee() {
 
     }
 
