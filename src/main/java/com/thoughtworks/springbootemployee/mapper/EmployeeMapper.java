@@ -1,8 +1,8 @@
 package com.thoughtworks.springbootemployee.mapper;
 
 import com.thoughtworks.springbootemployee.model.Employee;
-import com.thoughtworks.springbootemployee.model.EmployeeReponse;
-import com.thoughtworks.springbootemployee.model.EmployeeRequest;
+import com.thoughtworks.springbootemployee.dto.EmployeeReponse;
+import com.thoughtworks.springbootemployee.dto.EmployeeRequest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
