@@ -15,11 +15,9 @@ import java.util.Optional;
 @Service
 public class CompanyService {
 
-    private RetiredCompanyRepository retiredCompanyRepository;
     private CompanyRepository companyRepository;
 
-    public CompanyService(RetiredCompanyRepository retiredCompanyRepository, CompanyRepository companyRepository) {
-        this.retiredCompanyRepository = retiredCompanyRepository;
+    public CompanyService(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
     }
 
