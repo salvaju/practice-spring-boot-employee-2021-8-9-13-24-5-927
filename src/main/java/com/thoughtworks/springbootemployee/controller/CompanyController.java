@@ -1,9 +1,10 @@
 package com.thoughtworks.springbootemployee.controller;
 
 import com.thoughtworks.springbootemployee.dto.CompanyResponse;
+import com.thoughtworks.springbootemployee.dto.EmployeeReponse;
 import com.thoughtworks.springbootemployee.mapper.CompanyMapper;
+import com.thoughtworks.springbootemployee.mapper.EmployeeMapper;
 import com.thoughtworks.springbootemployee.model.Company;
-import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.service.CompanyService;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +16,12 @@ public class CompanyController {
 
     private CompanyService companyService;
     private final CompanyMapper companyMapper;
+    private final EmployeeMapper employeeMapper;
 
-    public CompanyController(CompanyService companyService, CompanyMapper companyMapper) {
+    public CompanyController(CompanyService companyService, CompanyMapper companyMapper, EmployeeMapper employeeMapper) {
         this.companyService = companyService;
         this.companyMapper = companyMapper;
+        this.employeeMapper = employeeMapper;
     }
 
     @GetMapping
@@ -32,8 +35,8 @@ public class CompanyController {
     }
 
     @GetMapping(path = "/{companyId}/employees")
-    public List<Employee> getCompanyEmployees(@PathVariable Integer companyId) {
-        return companyService.getCompanyEmployees(companyId);
+    public List<EmployeeReponse> getCompanyEmployees(@PathVariable Integer companyId) {
+        return employeeMapper.toResponse(companyService.getCompanyEmployees(companyId));
     }
 
     @GetMapping(params = {"pageIndex", "pageSize"})
