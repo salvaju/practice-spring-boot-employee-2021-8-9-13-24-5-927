@@ -19,7 +19,7 @@ public class CompanyController {
 
     @GetMapping
     public List<Company> getAllCompanies() {
-        return companyService.getCompanies();
+        return companyService.getAllCompanies();
     }
 
     @GetMapping(path = "/{companyId}")
