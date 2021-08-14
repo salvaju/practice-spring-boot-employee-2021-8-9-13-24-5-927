@@ -2,7 +2,6 @@ package com.thoughtworks.springbootemployee.dto;
 
 import com.thoughtworks.springbootemployee.model.Employee;
 
-import javax.persistence.*;
 import java.util.List;
 
 public class CompanyRequest {
