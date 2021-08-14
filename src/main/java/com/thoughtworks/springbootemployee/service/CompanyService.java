@@ -24,7 +24,7 @@ public class CompanyService {
     }
 
     public Company getCompanyById(Integer companyId) {
-        return retiredCompanyRepository.getCompanyByID(companyId);
+        return companyRepository.findById(companyId).orElse(null);
     }
 
     public List<Employee> getCompanyEmployees(Integer companyId) {
