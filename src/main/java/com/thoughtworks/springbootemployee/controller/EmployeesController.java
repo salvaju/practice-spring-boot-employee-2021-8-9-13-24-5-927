@@ -45,15 +45,17 @@ public class EmployeesController {
     }
 
     @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED) //TODO Use Employee Request and Mapper
+    @ResponseStatus(code = HttpStatus.CREATED)
     public EmployeeReponse addEmployee(@RequestBody EmployeeRequest employeeRequest) {
-       return employeeMapper.toResponse(employeeService.addEmployee(employeeMapper.toEntity(employeeRequest)));
+        Employee employee = employeeService.addEmployee(employeeMapper.toEntity(employeeRequest));
+       return employeeMapper.toResponse(employee);
     }
 
     @PutMapping(path = "/{employeeId}")
     @ResponseStatus(code = HttpStatus.CREATED)
     public EmployeeReponse updateEmployeeInformation(@PathVariable Integer employeeId, @RequestBody EmployeeRequest employeeRequest) {
-        return employeeMapper.toResponse(employeeService.updateEmployeeInformation(employeeId, employeeMapper.toEntity(employeeRequest)));
+        Employee employee = employeeService.updateEmployeeInformation(employeeId, employeeMapper.toEntity(employeeRequest));
+        return employeeMapper.toResponse(employee);
     }
 
     @DeleteMapping(path = "/{employeeId}")
