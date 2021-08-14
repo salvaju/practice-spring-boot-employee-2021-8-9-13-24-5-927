@@ -42,8 +42,9 @@ public class CompanyService {
         return company;
     }
 
-    public Company updateCompanyInformation(Integer companyID, Company updatedCompany) {
-        return retiredCompanyRepository.updateCompanyInformation(companyID, updatedCompany);
+    public Company updateCompanyInformation(Integer companyId, Company updatedCompanyInfo) {
+
+        return retiredCompanyRepository.updateCompanyInformation(companyId, updatedCompanyInfo);
     }
 
     public void deleteCompany(Integer companyId) {
