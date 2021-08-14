@@ -23,8 +23,8 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
-    public Company getCompanyByID(Integer companyID) {
-        return retiredCompanyRepository.getCompanyByID(companyID);
+    public Company getCompanyByID(Integer companyId) {
+        return retiredCompanyRepository.getCompanyByID(companyId);
     }
 
     public List<Employee> getCompanyEmployees(Integer companyId) {
