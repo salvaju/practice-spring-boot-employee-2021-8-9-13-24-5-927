@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -39,10 +40,10 @@ public class EmployeeService {
     }
 
     public Employee updateEmployeeInformation(Integer employeeId, Employee updatedEmployeeInfo) {
-        Employee currentEmployee = getEmployeeById(employeeId);
-        Employee updatedEmployee = updateEmployeeInfo(currentEmployee, updatedEmployeeInfo);
-        employeeRepository.save(updatedEmployee);
-        return updatedEmployee;
+       return Optional.ofNullable(getEmployeeById(employeeId))
+                .map(employee -> updateEmployeeInfo(employee, updatedEmployeeInfo))
+                .map(this::addEmployee)
+                .orElse(null);
     }
 
     private Employee updateEmployeeInfo(Employee employee, Employee updatedEmployeeInfo) {
