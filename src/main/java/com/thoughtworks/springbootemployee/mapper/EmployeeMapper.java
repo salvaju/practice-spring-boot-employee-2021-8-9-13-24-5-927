@@ -4,8 +4,10 @@ import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.model.EmployeeReponse;
 import com.thoughtworks.springbootemployee.model.EmployeeRequest;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class EmployeeMapper {
@@ -22,7 +24,18 @@ public class EmployeeMapper {
         BeanUtils.copyProperties(employee, employeeReponse);
 
         return employeeReponse;
+    }
 
+    public List<EmployeeReponse> toResponse(List<Employee> employees){
+        List<EmployeeReponse> employeeResponses = new ArrayList<>();
+
+        while(employeeResponses.size() < employees.size()) employeeResponses.add(new EmployeeReponse());
+
+        for (int i = 0; i < employees.size(); i++) {
+            BeanUtils.copyProperties(employees.get(i), employeeResponses.get(i));
+        }
+
+        return employeeResponses;
     }
 
 }

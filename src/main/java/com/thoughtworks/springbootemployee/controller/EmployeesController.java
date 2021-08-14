@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/employees")
@@ -26,8 +25,8 @@ public class EmployeesController {
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employeeService.getEmployees();
+    public List<EmployeeReponse> getAllEmployees() {
+        return employeeMapper.toResponse(employeeService.getEmployees());
     }
 
     @GetMapping(path = "/{employeeId}")
