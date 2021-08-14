@@ -36,8 +36,9 @@ public class CompanyService {
         return retiredCompanyRepository.getCompaniesByPagination(pageIndex, pageSize);
     }
 
-    public void addCompany(Company company) {
-        retiredCompanyRepository.addCompany(company);
+    public Company addCompany(Company company) {
+        companyRepository.save(company);
+        return company;
     }
 
     public Company updateCompanyInformation(Integer companyID, Company updatedCompany) {
