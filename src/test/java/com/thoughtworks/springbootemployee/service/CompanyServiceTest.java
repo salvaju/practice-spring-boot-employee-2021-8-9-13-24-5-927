@@ -41,7 +41,7 @@ public class CompanyServiceTest {
         when(retiredCompanyRepository.getCompanies()).thenReturn(companies);
 
         // When
-        List<Company> actualCompany = companyService.getCompanies();
+        List<Company> actualCompany = companyService.getAllCompanies();
 
         // Then
         assertEquals(companies, actualCompany);

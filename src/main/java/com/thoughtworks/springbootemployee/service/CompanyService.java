@@ -20,7 +20,7 @@ public class CompanyService {
     }
 
     public List<Company> getCompanies() {
-        return retiredCompanyRepository.getCompanies();
+        return companyRepository.findAll();
     }
 
     public Company getCompanyByID(Integer companyID) {
