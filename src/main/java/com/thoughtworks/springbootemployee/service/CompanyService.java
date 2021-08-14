@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CompanyService {
@@ -31,8 +32,7 @@ public class CompanyService {
     }
 
     public List<Employee> getCompanyEmployees(Integer companyId) {
-        Company company = companyRepository.findById(companyId).orElse(null);
-        return company.getEmployees();
+        return getCompanyById(companyId).getEmployees();
     }
 
     public List<Company> getCompaniesByPagination(Integer pageIndex, Integer pageSize) {
