@@ -33,7 +33,7 @@ public class CompanyController {
     }
 
     @GetMapping(params = {"pageIndex", "pageSize"})
-    public List<Company> getCompanyByPagination(@RequestParam Long pageIndex, @RequestParam Long pageSize) {
+    public List<Company> getCompanyByPagination(@RequestParam Integer pageIndex, @RequestParam Integer pageSize) {
         return companyService.getCompaniesByPagination(pageIndex, pageSize);
     }
 

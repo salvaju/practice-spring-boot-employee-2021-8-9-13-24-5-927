@@ -91,7 +91,7 @@ public class CompanyServiceTest {
         given(retiredCompanyRepository.getCompaniesByPagination(2L,5L)).willReturn(companies);
 
         // When
-        List<Company> actualCompanies = companyService.getCompaniesByPagination(2L, 5L);
+        List<Company> actualCompanies = companyService.getCompaniesByPagination(2, 5);
 
         // Then
         assertEquals(companies, actualCompanies);

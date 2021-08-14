@@ -4,6 +4,7 @@ import com.thoughtworks.springbootemployee.model.Company;
 import com.thoughtworks.springbootemployee.model.Employee;
 import com.thoughtworks.springbootemployee.repository.CompanyRepository;
 import com.thoughtworks.springbootemployee.repository.RetiredCompanyRepository;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +33,8 @@ public class CompanyService {
         return company.getEmployees();
     }
 
-    public List<Company> getCompaniesByPagination(Long pageIndex, Long pageSize) {
-        return retiredCompanyRepository.getCompaniesByPagination(pageIndex, pageSize);
+    public List<Company> getCompaniesByPagination(Integer pageIndex, Integer pageSize) {
+        return companyRepository.findAll((PageRequest.of(pageIndex - 1, pageSize))).getContent();
     }
 
     public Company addCompany(Company company) {
