@@ -27,8 +27,8 @@ public class CompanyController {
     }
 
     @GetMapping(path = "/{companyId}")
-    public Company getCompanyById(@PathVariable Integer companyId) {
-        return companyService.getCompanyById(companyId);
+    public CompanyResponse getCompanyById(@PathVariable Integer companyId) {
+        return companyMapper.toResponse(companyService.getCompanyById(companyId));
     }
 
     @GetMapping(path = "/{companyId}/employees")
