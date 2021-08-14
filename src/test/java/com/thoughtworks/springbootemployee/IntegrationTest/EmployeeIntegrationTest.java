@@ -98,13 +98,13 @@ public class EmployeeIntegrationTest {
     @Test
     void should_return_list_of_male_employees_when_call_get_all_employees_by_gender_api() throws Exception {
         //given
-        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        final Employee firstEmployee = new Employee("Rushia", 21, "Female", 999);
         employeeRepository.save(firstEmployee);
 
-        final Employee secondEmployee = new Employee(2,"Nijisanji", 21, "Male", 999);
+        final Employee secondEmployee = new Employee("Nijisanji", 21, "Male", 999);
         employeeRepository.save(secondEmployee);
 
-        final Employee thirdEmployee = new Employee(3,"Cong", 21, "Male", 999);
+        final Employee thirdEmployee = new Employee("Cong", 21, "Male", 999);
         employeeRepository.save(thirdEmployee);
 
         //when
@@ -125,25 +125,25 @@ public class EmployeeIntegrationTest {
     void should_return_list_of_employees_when_call_get_all_employees_by_pagination_api() throws Exception {
         //given
         List<Employee> employees = new ArrayList<>();
-        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        final Employee firstEmployee = new Employee("Rushia", 21, "Female", 999);
         employeeRepository.save(firstEmployee);
 
-        final Employee secondEmployee = new Employee(2,"Nijisanji", 21, "Male", 999);
+        final Employee secondEmployee = new Employee("Nijisanji", 21, "Male", 999);
         employeeRepository.save(secondEmployee);
 
-        final Employee thirdEmployee = new Employee(3,"Cong", 21, "Male", 999);
+        final Employee thirdEmployee = new Employee("Cong", 21, "Male", 999);
         employeeRepository.save(thirdEmployee);
 
-        final Employee fourthEmployee = new Employee(4,"Razor", 23, "Female", 999);
+        final Employee fourthEmployee = new Employee("Razor", 23, "Female", 999);
         employeeRepository.save(fourthEmployee);
 
-        final Employee fifthEmployee = new Employee(5,"Gon", 26, "Female", 999);
+        final Employee fifthEmployee = new Employee("Gon", 26, "Female", 999);
         employeeRepository.save(fifthEmployee);
 
-        final Employee sixthEmployee = new Employee(6,"Kuku", 24, "Male", 999);
+        final Employee sixthEmployee = new Employee("Kuku", 24, "Male", 999);
         employeeRepository.save(sixthEmployee);
 
-        final Employee seventhEmployee = new Employee(7,"Whitemon", 69, "Male", 999);
+        final Employee seventhEmployee = new Employee("Whitemon", 69, "Male", 999);
         employeeRepository.save(seventhEmployee);
 
         //when
@@ -164,7 +164,7 @@ public class EmployeeIntegrationTest {
     @Test
     void should_update_employee_when_call_update_employee_api() throws Exception {
         //given
-        final Employee firstEmployee = new Employee(1,"Rushia", 21, "Female", 999);
+        final Employee firstEmployee = new Employee("Rushia", 21, "Female", 999);
         final Employee savedEmployee = employeeRepository.save(firstEmployee);
         String employeeWithNewInfo = "{\n" +
                 "\"name\": \"JC\",\n" +

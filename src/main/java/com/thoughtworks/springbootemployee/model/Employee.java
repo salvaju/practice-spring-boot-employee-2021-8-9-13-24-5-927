@@ -18,15 +18,7 @@ public class Employee {
     private Integer salary;
     private Integer companyId;
 
-    public Employee( String name, Integer age, String gender, Integer salary) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
-        this.salary = salary;
-    }
-
-    public Employee(Integer id, String name, Integer age, String gender, Integer salary) { //TODO Delete
-        this.id = id;
+    public Employee(String name, Integer age, String gender, Integer salary) {
         this.name = name;
         this.age = age;
         this.gender = gender;

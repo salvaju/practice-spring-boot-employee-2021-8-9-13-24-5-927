@@ -30,11 +30,11 @@ public class EmployeeServiceTest {
     void should_return_all_employees_when_get_all_employees_given_all_employees(){
         // Given
             List<Employee> employees = new ArrayList<>();
-            employees.add(new Employee(1, "Yuto", 23, "Male", 15000));
-            employees.add(new Employee(2, "JC", 22, "Male", 10000));
-            employees.add(new Employee(3, "Khali", 21, "Female", 10000));
-            employees.add(new Employee(4, "Donald", 21, "Male", 104400));
-            employees.add(new Employee(5, "Bob", 69, "Male", 10000));
+            employees.add(new Employee( "Yuto", 23, "Male", 15000));
+            employees.add(new Employee( "JC", 22, "Male", 10000));
+            employees.add(new Employee( "Khali", 21, "Female", 10000));
+            employees.add(new Employee( "Donald", 21, "Male", 104400));
+            employees.add(new Employee( "Bob", 69, "Male", 10000));
             given(employeeRepository.findAll()).willReturn(employees);
 
         // When
@@ -49,7 +49,7 @@ public class EmployeeServiceTest {
     @Test
     void should_return_correct_employee_when_get_employee_by_id_given_an_employee_id(){
         // Given
-        Employee employee = new Employee(1, "Yuto", 23, "Male", 15000);
+        Employee employee = new Employee("Yuto", 23, "Male", 15000);
         given(employeeRepository.findById(1)).willReturn(java.util.Optional.of((employee)));
 
         // When
@@ -63,10 +63,10 @@ public class EmployeeServiceTest {
     void should_return_male_employees_when_get_employee_by_gender_given_all_employees_and_male_as_gender(){
         // Given
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee(1, "Yuto", 23, "Male", 15000));
-        employees.add(new Employee(2, "JC", 22, "Male", 10000));
-        employees.add(new Employee(4, "Donald", 21, "Male", 104400));
-        employees.add(new Employee(5, "Bob", 69, "Male", 10000));
+        employees.add(new Employee("Yuto", 23, "Male", 15000));
+        employees.add(new Employee("JC", 22, "Male", 10000));
+        employees.add(new Employee("Donald", 21, "Male", 104400));
+        employees.add(new Employee("Bob", 69, "Male", 10000));
         given(employeeRepository.findAllByGender("Male")).willReturn(employees);
 
         // When
@@ -97,7 +97,7 @@ public class EmployeeServiceTest {
     @Test
     void should_add_employee_when_add_Employee_given_a_new_employee(){
         // Given
-        Employee employee = new Employee(7, "Bell", 69, "Male", 16900);
+        Employee employee = new Employee("Bell", 69, "Male", 16900);
 
         // When
         employeeService.addEmployee(employee);

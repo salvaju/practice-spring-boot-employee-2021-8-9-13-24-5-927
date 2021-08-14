@@ -14,22 +14,22 @@ public class RetiredCompanyRepository {
 
     public RetiredCompanyRepository() {
         List<Employee> ooclEmployees = new ArrayList<>();
-        ooclEmployees.add(new Employee(1,"JC", 23, "Male", 10 ));
+        ooclEmployees.add(new Employee("JC", 23, "Male", 10 ));
 
         List<Employee> coscoEmployees = new ArrayList<>();
-        coscoEmployees.add(new Employee(1,"Pekora", 23, "Female", 1023 ));
+        coscoEmployees.add(new Employee("Pekora", 23, "Female", 1023 ));
 
         List<Employee> holoEmployees = new ArrayList<>();
-        holoEmployees.add(new Employee(1,"Coco", 23, "Female", 1044 ));
+        holoEmployees.add(new Employee("Coco", 23, "Female", 1044 ));
 
         List<Employee> nijisanjiEmployees = new ArrayList<>();
-        nijisanjiEmployees.add(new Employee(1,"Gura", 23, "Female", 666 ));
+        nijisanjiEmployees.add(new Employee("Gura", 23, "Female", 666 ));
 
         List<Employee> vtuberEmployees = new ArrayList<>();
-        vtuberEmployees.add(new Employee(1,"TMT", 23, "Female", 10000 ));
+        vtuberEmployees.add(new Employee("TMT", 23, "Female", 10000 ));
 
         List<Employee> xiaomiEmployees = new ArrayList<>();
-        xiaomiEmployees.add(new Employee(1,"Peko", 23, "Male", 10 ));
+        xiaomiEmployees.add(new Employee("Peko", 23, "Male", 10 ));
 
 
         companies = new ArrayList<>();
