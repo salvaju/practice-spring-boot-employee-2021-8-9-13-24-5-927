@@ -46,8 +46,9 @@ public class CompanyController {
     }
 
     @PostMapping
-    public Company addCompany(@RequestBody CompanyRequest companyRequest) {
-        return companyService.addCompany(companyMapper.toEntity(companyRequest));
+    public CompanyResponse addCompany(@RequestBody CompanyRequest companyRequest) {
+        Company company = companyService.addCompany(companyMapper.toEntity(companyRequest));
+        return companyMapper.toResponse(company);
     }
 
     @PutMapping(path = "/{companyId}")
